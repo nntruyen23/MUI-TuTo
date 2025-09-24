@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
+import { Button } from "./UI/Button";
 
 const Home = () => {
     return (
-        <Button variant="contained"> login </Button>
+        <Button className=".btn-sign-in" variant="contained"> login </Button>
     );
 }
 
