@@ -1,41 +1,21 @@
-import { Link, OutlinedInput, InputAdornment , Box, Button, Checkbox, Container, FormControlLabel, FormLabel, Paper, TextField , FormControl, IconButton, Grid, Typography } from '@mui/material';
-import { useState } from 'react';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-const Login = () => {
-    const navigate = useNavigate();
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const imageUrl = "/src/assets/auth-bg.jpg";
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    };
 
-    const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    };
-    const handleSubmitSignIn = () => {
+import { Box, Button, Container, FormLabel, Paper, TextField , Typography, Link } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const ForgotPassword = () => {
+    const imageUrl = "/src/assets/auth-bg.jpg";
+    const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
+    const handleSubmit = () => {
         
-        if (!userName || !password) {
-            alert("Vui lòng nhập đầy đủ Username và Password!");
-            return;
-        }
-        //check thông tin đăng nhập 
-        //...
-        alert("Đăng nhập thành công.");
-        setUserName('');
-        setPassword('');
-        //Chuyển hướng
-        //...
-        window.location.href = "";
-    }
-    const handleClickForgotPassword = () => {
-        navigate('/auth/forgotpassword')
+        return;
+    };
+    const handleClickLogin = () => {
+        navigate('/auth/login')
     }
     return (
-        
         <Box
             width={'100%'}
             height={'100%'}
@@ -48,7 +28,7 @@ const Login = () => {
             sx={{
                 backgroundColor:'rgb(243, 246, 249)',
             }}
-        >
+        >      
             <Box
                 zIndex={10}
                 width={'100%'}
@@ -60,7 +40,6 @@ const Login = () => {
                     backgroundImage: `url(${'https://gear-viet.vercel.app/static/media/shape.c087bf7aeb7116d08f9ac0693e55b4cb.svg'})`,    
                     position: 'absolute',
                     top: '280px',
-                   
                 }}
             >
                 
@@ -78,16 +57,18 @@ const Login = () => {
                 }}
             >
             </Box>
-            
-            
+
             <Container 
-                maxWidth = 'xs' 
+                maxWidth = 'xs'
                 sx={{
-                    zIndex: 40
+                    
+                    zIndex: 40,
+                    justifyItems:'center',
                 }}
             >
                 <Paper  
                     sx = {{ 
+                        
                         p: '24px',
                         boxShadow: 'rgba(56, 65, 74, 0.15) 0px 1px 2px',
                     }
@@ -103,7 +84,7 @@ const Login = () => {
                             textAlign: 'center',
                         }}
                     >
-                         Welcome Back !
+                         Forgot Password?
                     </Typography>
                     <Typography
                         sx={{
@@ -116,10 +97,44 @@ const Login = () => {
                             textAlign: 'center',
                         }}
                     >
-                         Sign in to continue.
+                        Reset password with NeKeTech
                     </Typography>
                     <Box
-                        sx = {{mt: 1}}
+                        sx={{
+                            textAlign: 'center',
+                        }}
+                    >
+                        <img
+                            src="/src/assets/auth-forgot-icon.png" 
+                            alt="icon" 
+                            style={{ width: '80px', height: '80px' }} 
+                        />
+                    </Box>
+                    <Paper
+                        sx={{
+                            
+                            boxShadow: 'rgba(56, 65, 74, 0.15) 0px 1px 2px',
+                            backgroundColor: 'rgb(255, 244, 229)',
+                            p: '6px 16px',
+                            display: 'flex',
+                            borderRadius: '4px',
+                        }}
+                    >   
+                        <Typography
+                            sx={{
+                                color: 'rgb(102, 60, 0)',
+                                fontSize: '13px',
+                                fontWeight: '400',
+                                fontFamily: 'Poppins, sans-serif',  
+                                lineHeight: 'line-height: 1.43',
+                                p: '8px 0px',
+                            }}
+                        >
+                            Enter your email and instructions will be sent to you!
+                        </Typography>
+                    </Paper>
+                    <Box
+                        sx = {{mt: '24px'}}
                     >
                         <FormLabel 
                             sx = {{
@@ -129,7 +144,42 @@ const Login = () => {
                                 fontWeight:'600'
                             }}
                         > 
-                            Username 
+                            Username <span style={{color: 'rgb(240, 101, 72)'}}>*</span>
+                        </FormLabel>
+                        <TextField
+                            variant="outlined"
+                            id='username'
+                            fullWidth
+                            required
+                            autoFocus
+                            sx = {{
+                                mb: 2, 
+                                mt: 1,
+                                p: 0,
+                                '& .MuiInputBase-root': {
+                                    fontFamily: 'Poppins, sans-serif',
+                                    height: '38px',
+                                    backgroundColor: 'white',
+                                },
+                                '& .MuiOutlinedInput-input': {
+                                    p: '10px',
+                                    fontSize:'13px',
+                                }
+                            }}
+                            placeholder="Enter username address"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
+                            
+                        />
+                        <FormLabel 
+                            sx = {{
+                                mb: '5rem', 
+                                fontFamily: 'Poppins, sans-serif',
+                                fontSize: '13px', 
+                                fontWeight:'600'
+                            }}
+                        > 
+                            Email <span style={{color: 'rgb(240, 101, 72)'}}>*</span>
                         </FormLabel>
                         <TextField
                             variant="outlined"
@@ -152,107 +202,13 @@ const Login = () => {
                                 }
 
                             }}
-                            placeholder="Enter username address"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
+                            placeholder="Enter email address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            
                         />
-                        <FormLabel 
-                            sx = {{
-                                mb: '5rem', 
-                                fontFamily: 'Poppins, sans-serif',
-                                fontSize: '13px', 
-                                fontWeight:'600'
-                            }}
-                        > 
-                            Password 
-                        </FormLabel>
-                        <FormControl
-                            variant="outlined"
-                            fullWidth
-                            sx={{
-                                mt: 1,
-                                '& .MuiOutlinedInput-input': {
-                                    p: '10px',
-                                    fontSize:'13px',
-                                }
-
-                            }}
-                        >   
-                            <OutlinedInput
-                                id="password"
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label={
-                                                showPassword ? 'hide the password' : 'display the password'
-                                            }
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            onMouseUp={handleMouseUpPassword}
-                                            edge="end"
-                                        > 
-                                            <Box sx={{ transform: 'scale(0.7)' }}>
-                                                {showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </Box>
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                placeholder="Enter password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}                                
-                            />
-                        </FormControl>
                         
-                    </Box>
-                    <Grid container>
-                        <Grid size={6}>
-                            <FormControlLabel 
-                                control={<Checkbox value={"remember"} color='primary'/>}
-                                sx={{
-                                    
-                                     
-                                    '& .MuiTypography-root': {
-                                        m: '0',
-                                        fontSize: '14px',
-                                        fontFamily: "Poppins, sans-serif",
-                                        color:"rgb(73, 80, 87)",
-                                        fontWeight: '400',
-                                        lineHeight: '1.5',
-                                    }
-                                }}
-                                label="Remember me"
-                            />
-                        </Grid>
-                        <Grid 
-                            size={6}
-                            sx={{
-                                alignContent: "center",
-                                textAlignLast: "right"   
-                            }}
-                        >
-                            <Link 
-                                href= '/auth/forgotpassword'
-                                className='text-sm  cursor-pointer '
-                                underline="none"
-                                onClick = {() => handleClickForgotPassword}
-                                sx={{
-                                    m: '0',
-                                    fontSize: '14px',
-                                    lineHeight: '1.5',
-                                    fontFamily: "Poppins, sans-serif",
-                                    color:'rgb(135, 138, 153)',
-                                    fontWeight: '400',
-                                    '&:hover': {
-                                        color: '#223767',
-                                    },
-                                }}
-                            >
-                                Forgot Password?
-                            </Link>
-                        </Grid>
-                    </Grid>
-                    
+                    </Box>                    
                     <Button
                         type="button"
                         variant="contained"
@@ -270,9 +226,9 @@ const Login = () => {
                                 backgroundColor: "#088f7d",
                             },
                         }}
-                        onClick={handleSubmitSignIn}
+                        onClick={() => handleSubmit}
                     >
-                        Sign In
+                        Send Reset
                     </Button>
                 </Paper> 
                 <Typography
@@ -284,27 +240,29 @@ const Login = () => {
                         lineHeight: '1.5',
                         fontSize: '14px',
                     }}
-                   
                 >
-                    Don't have an LoginValuesType ? {" "}
-                    <Typography
-                        component="span"
-                        sx={{ 
-                            color: '#000000', 
-                            fontWeight: '700', 
-                            textDecorationLine: 'underline',
+                    Wait, I remember my password... {" "}
+                    <Link
+                        href= '/auth/login'
+                        borderBottom={'black'}
+                        underline='always'
+                        onClick = {() => handleClickLogin}
+                        sx={{
+                            m: '0',
                             fontSize: '.875rem',
                             lineHeight: '1.25rem',
-
+                            fontFamily: "Poppins, sans-serif",
+                            color:'#000000',
+                            fontWeight: '700',
+                            textDecorationColor:'#000000',
                         }}
                     >
-                         Sign up
-                    </Typography>
+                        Click here
+                    </Link>
                 </Typography>
             </Container>
             
         </Box>
-        
     );
 }
-export default Login;
+export default ForgotPassword;
