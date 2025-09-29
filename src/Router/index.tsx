@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from '../Pages/Login';
-import ForgotPassword from '../Pages/Home/ForgotPassword';
+import ForgotPassword from '../Pages/ForgotPassword';
 const Routing: React.FC = () => {
     return (
         <Router>
