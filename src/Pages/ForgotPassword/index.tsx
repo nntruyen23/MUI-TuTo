@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ForgotPassword = () => {
-    const imageUrl = "/src/assets/auth-bg.jpg";
+    const imageUrl = "/assets/auth-bg.jpg";
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -105,7 +105,7 @@ const ForgotPassword = () => {
                         }}
                     >
                         <img
-                            src="/src/assets/auth-forgot-icon.png" 
+                            src="/assets/auth-forgot-icon.png" 
                             alt="icon" 
                             style={{ width: '80px', height: '80px' }} 
                         />

@@ -8,7 +8,7 @@ const Login = () => {
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const imageUrl = "/src/assets/auth-bg.jpg";
+    const imageUrl = "/assets/auth-bg.jpg";
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
