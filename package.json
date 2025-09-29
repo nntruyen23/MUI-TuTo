@@ -39,11 +39,5 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.1.12"
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  }
 }
