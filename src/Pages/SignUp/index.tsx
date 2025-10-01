@@ -18,19 +18,18 @@ const Login = () => {
     };
     const handleSubmitSignIn = () => {
         
-        // if (!userName || !password) {
-        //     alert("Vui lòng nhập đầy đủ Username và Password!");
-        //     return;
-        // }
-        // //check thông tin đăng nhập 
-        // //...
-        // alert("Đăng nhập thành công.");
-        // setUserName('');
-        // setPassword('');
-        // //Chuyển hướng
-        // //...
-        // window.location.href = "";
-        navigate('/home');
+        if (!userName || !password) {
+            alert("Vui lòng nhập đầy đủ Username và Password!");
+            return;
+        }
+        //check thông tin đăng nhập 
+        //...
+        alert("Đăng nhập thành công.");
+        setUserName('');
+        setPassword('');
+        //Chuyển hướng
+        //...
+        window.location.href = "";
     }
     const handleClickForgotPassword = () => {
         navigate('/auth/forgotpassword')
